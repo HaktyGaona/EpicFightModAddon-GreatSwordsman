@@ -1,0 +1,50 @@
+{
+  "entity.weapon.sword_hit": {
+    "subtitle": "subtitles.greatswordsman.sword_hit",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/sword_hit", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.sword_whack": {
+    "subtitle": "subtitles.greatswordsman.sword_whack",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/sword_whack", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.sword_swing": {
+    "subtitle": "subtitles.greatswordsman.sword_swing",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/sword_swing", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.sword_slash": {
+    "subtitle": "subtitles.greatswordsman.sword_slash",
+    "sounds": [
+      {"name": "greatswordsman:entity/weapon/sword_slash1", "stream": true},
+      {"name": "greatswordsman:entity/weapon/sword_slash2", "stream": true},
+      {"name": "greatswordsman:entity/weapon/sword_slash3", "stream": true}
+    ]
+  },
+  "entity.weapon.sword_guard": {
+    "subtitle": "subtitles.greatswordsman.sword_guard",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/sword_guard", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.poise": {
+    "subtitle": "subtitles.greatswordsman.poise",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/poise", "stream": true
+      }
+    ]
+  }
+}
