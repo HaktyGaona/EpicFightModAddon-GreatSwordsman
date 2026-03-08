@@ -59,7 +59,7 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                         System.out.println("1 to 2 no");
                     }
                 }
-                else if (SwordCraftAnimations.COMBOSLASH_2.equals(event.getAnimation())) {
+                if (SwordCraftAnimations.COMBOSLASH_2.equals(event.getAnimation())) {
                     List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
                     if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
                         container.getExecutor().reserveAnimation(this.third);
@@ -73,7 +73,7 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                         System.out.println("2 to 3 no");
                     }
                 }
-                else if (SwordCraftAnimations.COMBOSLASH_3.equals(event.getAnimation())) {
+                if (SwordCraftAnimations.COMBOSLASH_3.equals(event.getAnimation())) {
                     List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
                     if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
                         container.getExecutor().reserveAnimation(this.fourth);
@@ -87,9 +87,10 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                         System.out.println("3 to 4 no");
                     }
                 }
-                else if (SwordCraftAnimations.COMBOSLASH_4.equals(event.getAnimation())) {
+                if (SwordCraftAnimations.COMBOSLASH_4.equals(event.getAnimation())) {
                     List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
                     if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
                         container.getExecutor().reserveAnimation(this.fifth);
                         container.getExecutor().getCurrentlyActuallyHitEntities().clear();
                         System.out.println("4 to 5 yes");
@@ -101,11 +102,11 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                         System.out.println("4 to 5 no");
                     }
                 }
-                else if (SwordCraftAnimations.COMBOSLASH_5.equals(event.getAnimation())) {
-                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                    container.getExecutor().reserveAnimation(this.fail);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("5 end");
+                if (SwordCraftAnimations.COMBOSLASH_5.equals(event.getAnimation())) {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.fail);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("5 no");
                 }
             }
         }, this);
@@ -117,7 +118,7 @@ public class ComboSlashSkill extends WeaponInnateSkill {
         super.executeOnServer(container, arguments);
         ((ServerPlayer) container.getExecutor().getOriginal()).addEffect(
                 new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(EpicFightMobEffects.STUN_IMMUNITY.get()),
-                        35, 0, true, false, false));
+                        60, 0, true, false, false));
     }
     @Override
     public List<Component> getTooltipOnItem(ItemStack itemStack, CapabilityItem cap, PlayerPatch<?> playerCap) {
