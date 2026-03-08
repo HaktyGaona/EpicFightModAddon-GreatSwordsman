@@ -43,70 +43,70 @@ public class ComboSlashSkill extends WeaponInnateSkill {
         super.onInitiate(container, eventListener);
 
         eventListener.registerEvent(EpicFightEventHooks.Animation.END, event -> {
-            if (SwordCraftAnimations.COMBOSLASH_1.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
-                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
-                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                    container.getExecutor().reserveAnimation(this.second);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("1 to 2 success");
+            if (!container.getExecutor().getOriginal().level().isClientSide()) {
+                if (SwordCraftAnimations.COMBOSLASH_1.equals(event.getAnimation())) {
+                    List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
+                    if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.second);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("1 to 2 yes");
                 }
-                else {
+                    else {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.fail);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("1 to 2 no");
+                    }
+                }
+                else if (SwordCraftAnimations.COMBOSLASH_2.equals(event.getAnimation())) {
+                    List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
+                    if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().reserveAnimation(this.third);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("2 to 3 yes");
+                    }
+                    else {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.fail);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("2 to 3 no");
+                    }
+                }
+                else if (SwordCraftAnimations.COMBOSLASH_3.equals(event.getAnimation())) {
+                    List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
+                    if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().reserveAnimation(this.fourth);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("3 to 4 yes");
+                    }
+                    else {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.fail);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("3 to 4 no");
+                    }
+                }
+                else if (SwordCraftAnimations.COMBOSLASH_4.equals(event.getAnimation())) {
+                    List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
+                    if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().reserveAnimation(this.fifth);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("4 to 5 yes");
+                    }
+                    else {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                        container.getExecutor().reserveAnimation(this.fail);
+                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                        System.out.println("4 to 5 no");
+                    }
+                }
+                else if (SwordCraftAnimations.COMBOSLASH_5.equals(event.getAnimation())) {
+                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
                     container.getExecutor().reserveAnimation(this.fail);
                     container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("1 fail");
+                    System.out.println("5 end");
                 }
-                System.out.println("1 to 2 end");
-            }
-            else if (SwordCraftAnimations.COMBOSLASH_2.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
-                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
-                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                    container.getExecutor().reserveAnimation(this.third);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("2 to 3 success");
-                }
-                else {
-                    container.getExecutor().reserveAnimation(this.fail);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("2 fail");
-                }
-                System.out.println("2 to 3 end");
-            }
-            else if (SwordCraftAnimations.COMBOSLASH_3.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
-                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
-                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                    container.getExecutor().reserveAnimation(this.fourth);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("3 to 4 success");
-                }
-                else {
-                    container.getExecutor().reserveAnimation(this.fail);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("3 fail");
-                }
-                System.out.println("3 to 4 end");
-            }
-            else if (SwordCraftAnimations.COMBOSLASH_4.equals(event.getAnimation())) {
-                List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
-                if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
-                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                    container.getExecutor().reserveAnimation(this.fifth);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("4 to 5 success");
-                }
-                else {
-                    container.getExecutor().reserveAnimation(this.fail);
-                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                    System.out.println("4 fail");
-                }
-                System.out.println("4 to 5 end");
-            }
-            else if (SwordCraftAnimations.COMBOSLASH_5.equals(event.getAnimation())) {
-                container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                container.getExecutor().reserveAnimation(this.fail);
-                System.out.println("5 end");
             }
         }, this);
     }
