@@ -91,7 +91,7 @@ public class NeoParryingSkill extends ParryingSkill {
         this.parryWindow = parameters.getInt("parry_window");
 
         if (this.parryWindow <= 0) {
-            this.parryWindow = 8;
+            this.parryWindow = 20;
         }
     }
 
