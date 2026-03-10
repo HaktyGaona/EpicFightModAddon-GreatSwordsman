@@ -1,0 +1,247 @@
+package com.hakty.greatswordsman.skill.guard;
+
+import com.hakty.greatswordsman.gameasset.SwordCraftAnimations;
+import com.hakty.greatswordsman.gameasset.SwordCraftSounds;
+import com.hakty.greatswordsman.world.capability.item.SwordWeaponCategories;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.phys.Vec3;
+import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
+import yesman.epicfight.api.animation.types.StaticAnimation;
+import yesman.epicfight.api.event.EntityEventListener;
+import yesman.epicfight.api.event.types.entity.TakeDamageEvent;
+import yesman.epicfight.gameasset.Animations;
+import yesman.epicfight.particle.HitParticleType;
+import yesman.epicfight.registry.entries.EpicFightParticles;
+import yesman.epicfight.registry.entries.EpicFightSkillDataKeys;
+import yesman.epicfight.registry.entries.EpicFightSkills;
+import yesman.epicfight.registry.entries.EpicFightSounds;
+import yesman.epicfight.skill.Skill;
+import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillDataKey;
+import yesman.epicfight.skill.SkillDataManager;
+import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.skill.guard.ParryingSkill;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.capabilities.item.WeaponCategory;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
+
+public class NeoParryingSkill extends ParryingSkill {
+
+    public NeoParryingSkill(GuardSkill.Builder builder) {
+        super(builder);
+    }
+
+    public static GuardSkill.Builder createActiveGuardBuilder() {
+        return GuardSkill.createGuardBuilder(NeoParryingSkill::new)
+                .addGuardMotion(SwordWeaponCategories.STILETTO, (item, player) ->
+                        item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ? Animations.SWORD_GUARD_HIT : Animations.SWORD_DUAL_GUARD_HIT)
+                .addGuardBreakMotion(SwordWeaponCategories.STILETTO, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED)
+                .addAdvancedGuardMotion(SwordWeaponCategories.STILETTO, (itemCap, playerpatch) -> itemCap.getStyle(playerpatch) == CapabilityItem.Styles.ONE_HAND ?
+                        List.of(Animations.SWORD_GUARD_ACTIVE_HIT1, Animations.SWORD_GUARD_ACTIVE_HIT2) : List.of(Animations.SWORD_GUARD_ACTIVE_HIT2, Animations.SWORD_GUARD_ACTIVE_HIT3))
+
+                .addGuardMotion(SwordWeaponCategories.SHORTSWORD, (item, player) ->
+                        item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ? Animations.SWORD_GUARD_HIT : Animations.SWORD_DUAL_GUARD_HIT)
+                .addGuardBreakMotion(SwordWeaponCategories.SHORTSWORD, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED)
+                .addAdvancedGuardMotion(SwordWeaponCategories.SHORTSWORD, (itemCap, playerpatch) -> itemCap.getStyle(playerpatch) == CapabilityItem.Styles.ONE_HAND ?
+                        List.of(Animations.SWORD_GUARD_ACTIVE_HIT1, Animations.SWORD_GUARD_ACTIVE_HIT2) : List.of(Animations.SWORD_GUARD_ACTIVE_HIT2, Animations.SWORD_GUARD_ACTIVE_HIT3))
+
+                .addGuardMotion(SwordWeaponCategories.KATZBALGER, (item, player) ->
+                        item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ? Animations.SWORD_GUARD_HIT : Animations.SWORD_DUAL_GUARD_HIT)
+                .addGuardBreakMotion(SwordWeaponCategories.KATZBALGER, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED)
+                .addAdvancedGuardMotion(SwordWeaponCategories.KATZBALGER, (itemCap, playerpatch) -> itemCap.getStyle(playerpatch) == CapabilityItem.Styles.ONE_HAND ?
+                        List.of(Animations.SWORD_GUARD_ACTIVE_HIT1, Animations.SWORD_GUARD_ACTIVE_HIT2) : List.of(Animations.SWORD_GUARD_ACTIVE_HIT2, Animations.SWORD_GUARD_ACTIVE_HIT3))
+
+                .addGuardMotion(SwordWeaponCategories.BASTARDSWORD, (item, player) ->
+                        item.getStyle(player) ==CapabilityItem.Styles.ONE_HAND ?
+                                SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1 : SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
+                .addGuardBreakMotion(SwordWeaponCategories.BASTARDSWORD, (item, player) ->
+                        item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ?
+                                SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED : SwordCraftAnimations.SWORDCRAFT_TYPE2_NEUTRALIZED)
+                .addAdvancedGuardMotion(SwordWeaponCategories.BASTARDSWORD, (item, player) ->
+                        item.getStyle(player) ==CapabilityItem.Styles.ONE_HAND ?
+                                List.of(SwordCraftAnimations.SWORDCRAFT_TYPE1_DEFLECT1, SwordCraftAnimations.SWORDCRAFT_TYPE1_DEFLECT2) : List.of(SwordCraftAnimations.SWORDCRAFT_TYPE2_DEFLECT1))
+
+                .addGuardMotion(SwordWeaponCategories.CLAYMORE, (item, player) ->
+                        SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
+                .addGuardBreakMotion(SwordWeaponCategories.CLAYMORE, (item, player) ->
+                        SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
+                .addAdvancedGuardMotion(SwordWeaponCategories.CLAYMORE, (item, player) ->
+                        List.of(SwordCraftAnimations.SWORDCRAFT_TYPE1_DEFLECT1, SwordCraftAnimations.SWORDCRAFT_TYPE1_DEFLECT2));
+    }
+
+    private int parryWindow;
+
+    @Override
+    public void loadDatapackParameters(CompoundTag parameters) {
+        super.loadDatapackParameters(parameters);
+
+        this.parryWindow = parameters.getInt("parry_window");
+
+        if (this.parryWindow <= 0) {
+            this.parryWindow = 8;
+        }
+    }
+
+    @Override
+    public void onInitiate(SkillContainer skillContainer, EntityEventListener eventListener) {
+        super.onInitiate(skillContainer, eventListener);
+
+        skillContainer.runOnServer(playerpatch -> {
+            CapabilityItem itemCapability = skillContainer.getExecutor().getHoldingItemCapability(InteractionHand.MAIN_HAND);
+
+            if (this.isHoldingWeaponAvailable(skillContainer.getExecutor(), itemCapability, BlockType.GUARD) && this.isExecutableState(skillContainer.getExecutor())) {
+                skillContainer.getExecutor().getOriginal().startUsingItem(InteractionHand.MAIN_HAND);
+            }
+
+            int lastActive = skillContainer.getDataManager().getDataValue(EpicFightSkillDataKeys.LAST_ACTIVE);
+
+            if (skillContainer.getExecutor().getOriginal().tickCount - lastActive > this.parryWindow * 2) {
+                skillContainer.getDataManager().setData(EpicFightSkillDataKeys.LAST_ACTIVE, skillContainer.getExecutor().getOriginal().tickCount);
+            }
+        });
+    }
+
+    @Override
+    public void startHolding(SkillContainer skillContainer) {
+        super.startHolding(skillContainer);
+
+        skillContainer.runOnServer(serverExecutor -> {
+            int lastActive = skillContainer.getDataManager().getDataValue(EpicFightSkillDataKeys.LAST_ACTIVE);
+
+            if (serverExecutor.getOriginal().tickCount - lastActive > 5) {
+                skillContainer.getDataManager().setDataSync(EpicFightSkillDataKeys.LAST_ACTIVE, serverExecutor.getOriginal().tickCount);
+            }
+        });
+    }
+
+    @Override
+    public void guard(SkillContainer container, CapabilityItem itemCapability, ServerPlayerPatch playerPatch, TakeDamageEvent.Income event, float knockback, float impact, boolean advanced) {
+        if (this.isHoldingWeaponAvailable(playerPatch, itemCapability, BlockType.ADVANCED_GUARD)) {
+            DamageSource damageSource = event.getDamageSource();
+            Entity offender = getOffender(damageSource);
+
+            if (offender != null && this.isBlockableSource(damageSource, true)) {
+                ServerPlayer serverplayer = playerPatch.getOriginal();
+                boolean successParrying = serverplayer.tickCount - container.getDataManager().getDataValue(EpicFightSkillDataKeys.LAST_ACTIVE) <= this.parryWindow;
+                float penalty = container.getDataManager().getDataValue(EpicFightSkillDataKeys.PENALTY);
+                playerPatch.playSound(SwordCraftSounds.SWORD_GUARD.get(), 0.0F, 0.1F);
+                EpicFightParticles.HIT_BLUNT.get().spawnParticleWithArgument(serverplayer.serverLevel(), HitParticleType.FRONT_OF_EYES, HitParticleType.ZERO, serverplayer, offender);
+
+                if (successParrying) {
+                    event.setParried(true);
+                    penalty = 0.1F;
+                    knockback *= 0.4F;
+
+                    // Solution by Cyber2049(github): Fix continuous parry
+                    container.getDataManager().setData(EpicFightSkillDataKeys.LAST_ACTIVE, 0);
+                    movePlayerBackward(playerPatch, -5);
+                } else {
+                    penalty += this.getPenalizer(itemCapability);
+                    container.getDataManager().setDataSync(EpicFightSkillDataKeys.PENALTY, penalty);
+                }
+
+                if (offender instanceof LivingEntity livingentity) {
+                    float modifiedKnockback = EnchantmentHelper.modifyKnockback(serverplayer.serverLevel(), livingentity.getItemInHand(livingentity.getUsedItemHand()), livingentity, damageSource, knockback);
+                    knockback = (modifiedKnockback - knockback) * 10.0F;
+                }
+
+                playerPatch.knockBackEntity(offender.position(), knockback);
+                float consumeAmount = penalty * impact;
+                boolean canAfford = playerPatch.consumeForSkill(this, Skill.Resource.STAMINA, consumeAmount);
+
+                BlockType blockType = successParrying ? BlockType.ADVANCED_GUARD : (canAfford ? BlockType.GUARD : BlockType.GUARD_BREAK);
+                AnimationAccessor<? extends StaticAnimation> animation = this.getGuardMotion(container, playerPatch, itemCapability, blockType);
+
+                if (animation != null) {
+                    playerPatch.playAnimationSynchronized(animation, 0);
+                }
+
+                if (blockType == BlockType.GUARD_BREAK) {
+                    playerPatch.playSound(EpicFightSounds.NEUTRALIZE_MOBS.get(), 3.0F, 0.0F, 0.1F);
+                }
+
+                this.dealEvent(playerPatch, event, advanced);
+
+                return;
+            }
+        }
+
+        super.guard(container, itemCapability, playerPatch, event, knockback, impact, false);
+    }
+
+    private void movePlayerBackward(ServerPlayerPatch playerPatch, float distance) {
+        ServerPlayer player = playerPatch.getOriginal();
+
+        // 获取玩家的朝向角度
+        float yaw = player.getYRot();
+        double yawRad = Math.toRadians(yaw);
+
+        // 计算向后的方向向量
+        double moveX = Math.sin(yawRad) * distance;
+        double moveZ = -Math.cos(yawRad) * distance;
+
+        // 明确指定移动玩家自身
+        player.move(MoverType.SELF, new Vec3(moveX, 0, moveZ));
+
+        // 播放一个轻微的音效
+        playerPatch.playSound(EpicFightSounds.WHOOSH.get(), 0.5F, 0.8F);
+    }
+
+    @Override
+    protected boolean isBlockableSource(DamageSource damageSource, boolean advanced) {
+        return (damageSource.is(DamageTypeTags.IS_PROJECTILE) && advanced) || super.isBlockableSource(damageSource, false);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Nullable
+    protected AnimationAccessor<? extends StaticAnimation> getGuardMotion(SkillContainer container, PlayerPatch<?> playerpatch, CapabilityItem itemCapability, BlockType blockType) {
+        AnimationAccessor<? extends StaticAnimation> animation = itemCapability.getGuardMotion(this, blockType, playerpatch);
+
+        if (animation != null) {
+            return animation;
+        }
+
+        if (blockType == BlockType.ADVANCED_GUARD) {
+            List<AnimationAccessor<? extends StaticAnimation>> motions = (List<AnimationAccessor<? extends StaticAnimation>>)this.getGuardMotionMap(blockType).getOrDefault(itemCapability.getWeaponCategory(), (a, b) -> null).apply(itemCapability, playerpatch);
+
+            if (motions != null) {
+                SkillDataManager dataManager = container.getDataManager();
+                int motionCounter = dataManager.getDataValue(EpicFightSkillDataKeys.PARRY_MOTION_COUNTER);
+                dataManager.setDataF(EpicFightSkillDataKeys.PARRY_MOTION_COUNTER, (v) -> v + 1);
+                motionCounter %= motions.size();
+
+                return motions.get(motionCounter);
+            }
+        }
+
+        return super.getGuardMotion(container, playerpatch, itemCapability, blockType);
+    }
+
+    @Override
+    public Skill getPriorSkill() {
+        return EpicFightSkills.GUARD.get();
+    }
+
+    @Override
+    protected boolean isAdvancedGuard() {
+        return true;
+    }
+
+    @Override
+    public Set<WeaponCategory> getAvailableWeaponCategories() {
+        return this.advancedGuardMotions.keySet();
+    }
+}

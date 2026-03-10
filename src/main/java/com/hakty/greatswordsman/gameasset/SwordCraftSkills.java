@@ -1,10 +1,10 @@
 package com.hakty.greatswordsman.gameasset;
 
 import com.hakty.greatswordsman.GreatSwordsman;
+import com.hakty.greatswordsman.skill.guard.NeoParryingSkill;
 import com.hakty.greatswordsman.skill.weaponinnate.ComboSlashSkill;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.RegisterEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.registry.EpicFightRegistries;
@@ -54,5 +54,9 @@ public class SwordCraftSkills {
                     .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER))
                     .build(key));
+
+    public static final DeferredHolder<Skill, NeoParryingSkill> ADVANCED_PARRYING = REGISTRY.register("advanced_parrying", key ->
+            NeoParryingSkill.createActiveGuardBuilder().build(key)
+    );
 
 }
