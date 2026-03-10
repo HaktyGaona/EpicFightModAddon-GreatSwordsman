@@ -124,21 +124,21 @@ public class SwordCraftCompat{
             }
         });
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(icon ->{
-            icon.registerCategory(SwordWeaponCategories.BASTARDSWORD, new ItemStack(WeaponAddonItems.BASTARDSWORD_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.CLAYMORE, new ItemStack(WeaponAddonItems.CLAYMORE_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.SHORTSWORD, new ItemStack(WeaponAddonItems.SHORTSWORD_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.KATZBALGER, new ItemStack(WeaponAddonItems.KATZBALGER_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.PIKE, new ItemStack(WeaponAddonItems.PIKE_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.RANSEUR, new ItemStack(WeaponAddonItems.RANSEUR_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.GUISARME, new ItemStack(WeaponAddonItems.GUISARME_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.CONCAVEHALBERD, new ItemStack(WeaponAddonItems.CONCAVEHALBERD_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.LOCHABERAXE, new ItemStack(WeaponAddonItems.LOCHABERAXE_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.ZWEIHANDER, new ItemStack(WeaponAddonItems.ZWEIHANDER_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.FLAMEBLADEDSWORD, new ItemStack(WeaponAddonItems.FLAMEBLADEDSWORD_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.BLADEDSTICK, new ItemStack(WeaponAddonItems.BLADESTICK_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.WARHAMMER, new ItemStack(WeaponAddonItems.WARHAMMER_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.LUCERNEHAMMER, new ItemStack(WeaponAddonItems.LUCERNEHAMMER_TEMPLATE.get()));
-            icon.registerCategory(SwordWeaponCategories.STILETTO, new ItemStack(WeaponAddonItems.STILETTO_TEMPLATE.get()));
+            icon.registerCategory(SwordWeaponCategories.BASTARDSWORD, new ItemStack(WeaponAddonItems.BASTARDSWORD.get()));
+            icon.registerCategory(SwordWeaponCategories.CLAYMORE, new ItemStack(WeaponAddonItems.CLAYMORE.get()));
+            icon.registerCategory(SwordWeaponCategories.SHORTSWORD, new ItemStack(WeaponAddonItems.SHORTSWORD.get()));
+            icon.registerCategory(SwordWeaponCategories.KATZBALGER, new ItemStack(WeaponAddonItems.KATZBALGER.get()));
+            icon.registerCategory(SwordWeaponCategories.PIKE, new ItemStack(WeaponAddonItems.PIKE.get()));
+            icon.registerCategory(SwordWeaponCategories.RANSEUR, new ItemStack(WeaponAddonItems.RANSEUR.get()));
+            icon.registerCategory(SwordWeaponCategories.GUISARME, new ItemStack(WeaponAddonItems.GUISARME.get()));
+            icon.registerCategory(SwordWeaponCategories.CONCAVEHALBERD, new ItemStack(WeaponAddonItems.CONCAVEHALBERD.get()));
+            icon.registerCategory(SwordWeaponCategories.LOCHABERAXE, new ItemStack(WeaponAddonItems.LOCHABERAXE.get()));
+            icon.registerCategory(SwordWeaponCategories.ZWEIHANDER, new ItemStack(WeaponAddonItems.ZWEIHANDER.get()));
+            icon.registerCategory(SwordWeaponCategories.FLAMEBLADEDSWORD, new ItemStack(WeaponAddonItems.FLAMEBLADEDSWORD.get()));
+            icon.registerCategory(SwordWeaponCategories.BLADEDSTICK, new ItemStack(WeaponAddonItems.BLADESTICK.get()));
+            icon.registerCategory(SwordWeaponCategories.WARHAMMER, new ItemStack(WeaponAddonItems.WARHAMMER.get()));
+            icon.registerCategory(SwordWeaponCategories.LUCERNEHAMMER, new ItemStack(WeaponAddonItems.LUCERNEHAMMER.get()));
+            icon.registerCategory(SwordWeaponCategories.STILETTO, new ItemStack(WeaponAddonItems.STILETTO.get()));
         });
     }
 }

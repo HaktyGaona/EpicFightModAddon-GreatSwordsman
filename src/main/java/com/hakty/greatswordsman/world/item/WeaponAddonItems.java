@@ -10,35 +10,35 @@ public class WeaponAddonItems {
     public static final DeferredRegister.Items ITEMS =
             DeferredRegister.createItems(GreatSwordsman.MOD_ID);
 
-    public static final DeferredItem<Item> SHORTSWORD_TEMPLATE = ITEMS.register("shortsword", () ->
+    public static final DeferredItem<Item> SHORTSWORD = ITEMS.register("shortsword", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item>  KATZBALGER_TEMPLATE = ITEMS.register("katzbalger", () ->
+    public static final DeferredItem<Item>  KATZBALGER = ITEMS.register("katzbalger", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> BASTARDSWORD_TEMPLATE = ITEMS.register("bastardsword", () ->
+    public static final DeferredItem<Item> BASTARDSWORD = ITEMS.register("bastardsword", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> CLAYMORE_TEMPLATE = ITEMS.register("claymore", () ->
+    public static final DeferredItem<Item> CLAYMORE = ITEMS.register("claymore", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> PIKE_TEMPLATE = ITEMS.register("pike", () ->
+    public static final DeferredItem<Item> PIKE = ITEMS.register("pike", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> RANSEUR_TEMPLATE = ITEMS.register("ranseur", () ->
+    public static final DeferredItem<Item> RANSEUR = ITEMS.register("ranseur", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> GUISARME_TEMPLATE = ITEMS.register("guisarme", () ->
+    public static final DeferredItem<Item> GUISARME = ITEMS.register("guisarme", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> CONCAVEHALBERD_TEMPLATE = ITEMS.register("concavehalberd", () ->
+    public static final DeferredItem<Item> CONCAVEHALBERD = ITEMS.register("concavehalberd", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> LOCHABERAXE_TEMPLATE = ITEMS.register("lochaberaxe", () ->
+    public static final DeferredItem<Item> LOCHABERAXE = ITEMS.register("lochaberaxe", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> ZWEIHANDER_TEMPLATE = ITEMS.register("zweihander", () ->
+    public static final DeferredItem<Item> ZWEIHANDER = ITEMS.register("zweihander", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> FLAMEBLADEDSWORD_TEMPLATE = ITEMS.register("flamebladedsword", () ->
+    public static final DeferredItem<Item> FLAMEBLADEDSWORD = ITEMS.register("flamebladedsword", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> BLADESTICK_TEMPLATE = ITEMS.register("bladedstick", () ->
+    public static final DeferredItem<Item> BLADESTICK = ITEMS.register("bladedstick", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> WARHAMMER_TEMPLATE = ITEMS.register("warhammer", () ->
+    public static final DeferredItem<Item> WARHAMMER = ITEMS.register("warhammer", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> LUCERNEHAMMER_TEMPLATE = ITEMS.register("lucernehammer", () ->
+    public static final DeferredItem<Item> LUCERNEHAMMER = ITEMS.register("lucernehammer", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
-    public static final DeferredItem<Item> STILETTO_TEMPLATE = ITEMS.register("stylet", () ->
+    public static final DeferredItem<Item> STILETTO = ITEMS.register("stylet", () ->
             new SwordItem(new Item.Properties().durability(100).attributes(SwordItem.createWeaponAttributes(Tiers.IRON)), Tiers.IRON));
 
 
