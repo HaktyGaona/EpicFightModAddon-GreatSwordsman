@@ -72,9 +72,9 @@ public class SwordCraftAnimations {
     public static AnimationAccessor<StaticAnimation> SWORDCRAFT_TYPE2_GUARD;
     public static AnimationAccessor<GuardAnimation> SWORDCRAFT_TYPE1_HIT1;
     public static AnimationAccessor<GuardAnimation> SWORDCRAFT_TYPE2_HIT1;
-    public static AnimationAccessor<GuardAnimation> SWORDCRAFT_TYPE1_DEFLECT1;
-    public static AnimationAccessor<GuardAnimation> SWORDCRAFT_TYPE1_DEFLECT2;
-    public static AnimationAccessor<GuardAnimation> SWORDCRAFT_TYPE2_DEFLECT1;
+    public static AnimationAccessor<AttackAnimation> SWORDCRAFT_TYPE1_DEFLECT1;
+    public static AnimationAccessor<AttackAnimation> SWORDCRAFT_TYPE1_DEFLECT2;
+    public static AnimationAccessor<AttackAnimation> SWORDCRAFT_TYPE2_DEFLECT1;
     public static AnimationAccessor<LongHitAnimation> SWORDCRAFT_TYPE1_NEUTRALIZED;
     public static AnimationAccessor<LongHitAnimation> SWORDCRAFT_TYPE2_NEUTRALIZED;
 
@@ -121,7 +121,7 @@ public class SwordCraftAnimations {
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false));
         SWORDCRAFT_TYPE1_AIRSLASH = builder.nextAccessor("biped/combat/bastardsword/sword_type1_airslash", (accessor) ->
-                new AirSlashAnimation(0.05f, 0.15f, 0.33f, 0.5f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new AirSlashAnimation(0.05f, 0.28f, 0.5f, 0.6f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.0f))
                         .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.0f))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
@@ -131,9 +131,9 @@ public class SwordCraftAnimations {
         SWORDCRAFT_TYPE1_HIT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type1_hit1", (accessor) ->
                 new GuardAnimation(0.05f, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE1_DEFLECT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type1_parrying1", (accessor) ->
-                new GuardAnimation(0.05f, accessor, Armatures.BIPED));
+                new AttackAnimation(0.05f, 0.05f, 0.16f, 0.16f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED).addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.6f));
         SWORDCRAFT_TYPE1_DEFLECT2 = builder.nextAccessor("biped/guard/bastardsword/sword_type1_parrying2", (accessor) ->
-                new GuardAnimation(0.05f, accessor, Armatures.BIPED));
+                new AttackAnimation(0.05f, 0.05f, 0.16f, 0.16f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED).addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.6f));
         SWORDCRAFT_TYPE1_NEUTRALIZED = builder.nextAccessor("biped/guard/bastardsword/sword_type1_neutralized", (accessor) ->
                 new LongHitAnimation(0.05f, accessor, Armatures.BIPED));
 
@@ -142,7 +142,7 @@ public class SwordCraftAnimations {
                         .addProperty(AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
                         .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.0f)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0f)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
                         .addProperty(ActionAnimationProperty.COORD_SET_TICK, MoveCoordFunctions.TRACE_TARGET_DISTANCE)
                         .addProperty(ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0.01F, 0.16F))
@@ -238,7 +238,7 @@ public class SwordCraftAnimations {
         SWORDCRAFT_TYPE2_HIT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type2_hit1", (accessor) ->
                 new GuardAnimation(0.05f, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE2_DEFLECT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type2_parrying1", (accessor) ->
-                new GuardAnimation(0.05f, accessor, Armatures.BIPED));
+                new AttackAnimation(0.05f, 0.05f, 0.0f, 0.0f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED).addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6f));
         SWORDCRAFT_TYPE2_NEUTRALIZED = builder.nextAccessor("biped/guard/bastardsword/sword_type2_neutralized", (accessor) ->
                 new LongHitAnimation(0.05f, accessor, Armatures.BIPED));
     }

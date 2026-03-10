@@ -1,6 +1,7 @@
 package com.hakty.greatswordsman.gameasset;
 
 import com.hakty.greatswordsman.GreatSwordsman;
+import com.hakty.greatswordsman.skill.guard.NeoParryingSkill;
 import com.hakty.greatswordsman.skill.weaponinnate.ComboSlashSkill;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -9,6 +10,8 @@ import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProp
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.api.utils.math.ValueModifier;
 import yesman.epicfight.skill.Skill;
+import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.damagesource.EpicFightDamageTypeTags;
 import yesman.epicfight.world.damagesource.ExtraDamageInstance;
@@ -57,6 +60,8 @@ public class SwordCraftSkills {
                 .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
                 .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE, EpicFightDamageTypeTags.GUARD_PUNCTURE, EpicFightDamageTypeTags.FINISHER));
         COMBOSLASH = comboslash;
+
+        GuardSkill neoparrying = modRegistry.build("advanced_parrying", NeoParryingSkill::new, NeoParryingSkill.createActiveGuardBuilder());
     }
     public SwordCraftSkills() {}
     public static void registerSwordCraftSkills(RegisterEvent bus) {};
