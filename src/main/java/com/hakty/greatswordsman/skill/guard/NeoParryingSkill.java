@@ -21,6 +21,7 @@ import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.SkillDataKeys;
 import yesman.epicfight.skill.SkillDataManager;
 import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.skill.guard.ParryingSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
@@ -31,7 +32,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class NeoParryingSkill extends GuardSkill {
+public class NeoParryingSkill extends ParryingSkill {
 
     private int PARRY_WINDOW;
 
