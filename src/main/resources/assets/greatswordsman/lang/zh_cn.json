@@ -17,6 +17,8 @@
   "item.greatswordsman.zweihander": "德式双手剑模板",
   "skill.greatswordsman.comboslash": "五连斩",
   "skill.greatswordsman.comboslash.tooltip": "攻击五次，命中时眩晕目标\n击败敌人会冲断连击\n第五次攻击命中会击倒目标",
+  "skill.greatswordsman.advanced_parrying": "反击",
+  "skill.greatswordsman.advanced_parrying.tooltip": "增加你的招架窗口时间，降低招架的时间间隔。\n\n招架成功后对前方发动一次反击。",
   "weapon_category.epicfight.shortsword": "短剑",
   "weapon_category.epicfight.katzbalger": "斗剑",
   "weapon_category.epicfight.bastardsword": "混种剑",
