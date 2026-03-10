@@ -147,7 +147,6 @@ public class NeoParryingSkill extends ParryingSkill {
 
                     // Solution by Cyber2049(github): Fix continuous parry
                     container.getDataManager().setData(EpicFightSkillDataKeys.LAST_ACTIVE, 0);
-                    movePlayerBackward(playerPatch, -5);
                 } else {
                     penalty += this.getPenalizer(itemCapability);
                     container.getDataManager().setDataSync(EpicFightSkillDataKeys.PENALTY, penalty);
@@ -180,24 +179,6 @@ public class NeoParryingSkill extends ParryingSkill {
         }
 
         super.guard(container, itemCapability, playerPatch, event, knockback, impact, false);
-    }
-
-    private void movePlayerBackward(ServerPlayerPatch playerPatch, float distance) {
-        ServerPlayer player = playerPatch.getOriginal();
-
-        // 获取玩家的朝向角度
-        float yaw = player.getYRot();
-        double yawRad = Math.toRadians(yaw);
-
-        // 计算向后的方向向量
-        double moveX = Math.sin(yawRad) * distance;
-        double moveZ = -Math.cos(yawRad) * distance;
-
-        // 明确指定移动玩家自身
-        player.move(MoverType.SELF, new Vec3(moveX, 0, moveZ));
-
-        // 播放一个轻微的音效
-        playerPatch.playSound(EpicFightSounds.WHOOSH.get(), 0.5F, 0.8F);
     }
 
     @Override
