@@ -23,7 +23,7 @@ public class DodgeAnimationMixin {
         try {
             Field field = DodgeAnimation.class.getDeclaredField("DODGEABLE_SOURCE_VALIDATOR");
 
-            modifyStaticFinalField(field, mDK_1_21_1_ModDevGradle_main$createNewValidator());
+            modifyStaticFinalField(field, createNewValidator());
 
             System.out.println("[GreatSwordsman] Successfully modified DODGEABLE_SOURCE_VALIDATOR using Unsafe");
 
@@ -56,7 +56,7 @@ public class DodgeAnimationMixin {
     }
 
     @Unique
-    private static Function<DamageSource, AttackResult.ResultType> mDK_1_21_1_ModDevGradle_main$createNewValidator() {
+    private static Function<DamageSource, AttackResult.ResultType> createNewValidator() {
         return (damagesource) -> {
             System.out.println("[GreatSwordsman] Custom validator called for damage: " + damagesource.type());
 
