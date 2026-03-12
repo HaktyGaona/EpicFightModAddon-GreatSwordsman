@@ -61,6 +61,7 @@ public class DodgeAnimationMixin {
             System.out.println("[GreatSwordsman] Custom validator called for damage: " + damagesource.type());
 
             if (damagesource.getEntity() != null
+                    && !damagesource.is(DamageTypeTags.IS_EXPLOSION)
                     && !damagesource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)
                     && !damagesource.is(EpicFightDamageTypeTags.BYPASS_DODGE)) {
                 return AttackResult.ResultType.MISSED;
