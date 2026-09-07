@@ -20,7 +20,7 @@ import yesman.epicfight.world.capabilities.item.CapabilityItem;
 
 import java.util.List;
 
-public class ComboSlashSkill extends WeaponInnateSkill {
+public class ComboSlash extends WeaponInnateSkill {
     public final AssetAccessor<? extends AttackAnimation> first;
     public final AssetAccessor<? extends AttackAnimation> second;
     public final AssetAccessor<? extends AttackAnimation> third;
@@ -28,7 +28,7 @@ public class ComboSlashSkill extends WeaponInnateSkill {
     public final AssetAccessor<? extends AttackAnimation> fifth;
     public final AssetAccessor<? extends AttackAnimation> fail;
 
-    public ComboSlashSkill(WeaponInnateSkill.Builder<?> builder) {
+    public ComboSlash(WeaponInnateSkill.Builder<?> builder) {
         super(builder);
         this.first = SwordCraftAnimations.COMBOSLASH_1;
         this.second = SwordCraftAnimations.COMBOSLASH_2;
@@ -51,7 +51,7 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                         container.getExecutor().reserveAnimation(this.second);
                         container.getExecutor().getCurrentlyActuallyHitEntities().clear();
                         System.out.println("1 to 2 yes");
-                }
+                    }
                     else {
                         container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
                         container.getExecutor().reserveAnimation(this.fail);
@@ -103,10 +103,10 @@ public class ComboSlashSkill extends WeaponInnateSkill {
                     }
                 }
                 if (SwordCraftAnimations.COMBOSLASH_5.equals(event.getAnimation())) {
-                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                        container.getExecutor().reserveAnimation(this.fail);
-                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                        System.out.println("5 no");
+                    container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
+                    container.getExecutor().reserveAnimation(this.fail);
+                    container.getExecutor().getCurrentlyActuallyHitEntities().clear();
+                    System.out.println("5 no");
                 }
             }
         }, this);

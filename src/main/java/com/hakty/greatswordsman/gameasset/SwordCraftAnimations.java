@@ -1,7 +1,6 @@
 package com.hakty.greatswordsman.gameasset;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
@@ -12,14 +11,15 @@ import yesman.epicfight.api.animation.AnimationClip;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.AnimationManager.AnimationRegistryEvent;
 import yesman.epicfight.api.animation.AnimationManager.AnimationAccessor;
-import yesman.epicfight.api.animation.property.AnimationEvent;
 import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.property.MoveCoordFunctions;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.animation.types.AttackAnimation;
+import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.api.utils.HitEntityList;
 import yesman.epicfight.api.utils.TimePairList;
 import yesman.epicfight.api.utils.math.ValueModifier;
+import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -84,6 +84,8 @@ public class SwordCraftAnimations {
     public static AnimationAccessor<AttackAnimation> COMBOSLASH_5;
     public static AnimationAccessor<AttackAnimation> COMBOSLASH_FAIL;
 
+    public static AnimationAccessor<AttackAnimation> BRIGHTWINDSLASH;
+
     public static AnimationAccessor<StaticAnimation> STICK_IDLE;
     public static AnimationAccessor<ComboAttackAnimation> STICK_AUTO1;
     public static AnimationAccessor<ComboAttackAnimation> STICK_AUTO2;
@@ -100,9 +102,9 @@ public class SwordCraftAnimations {
         PICK_AUTO1 = builder.nextAccessor("biped/combat/pick/pick_attack1", (accessor) ->
                 new ComboAttackAnimation(0.05f, 0.16f, 0.2f, 0.3f, 0.45f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED));
         //混种剑类型1
-        SWORDCRAFT_TYPE1_IDLE = builder.nextAccessor("biped/living/bastardsword/sword_type1_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE1_WALK = builder.nextAccessor("biped/living/bastardsword/sword_type1_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE1_RUN = builder.nextAccessor("biped/living/bastardsword/sword_type1_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE1_IDLE = builder.nextAccessor("biped/living/bastardsword/sword_type1_idle", (accessor) -> new StaticAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE1_WALK = builder.nextAccessor("biped/living/bastardsword/sword_type1_walk", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE1_RUN = builder.nextAccessor("biped/living/bastardsword/sword_type1_run", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE1_AUTO1 = builder.nextAccessor("biped/combat/bastardsword/sword_type1_attack1", (accessor) ->
                 new ComboAttackAnimation(0.05f, 0.08f, 0.1f, 0.33f, 0.5f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
@@ -200,17 +202,17 @@ public class SwordCraftAnimations {
                         .addProperty(ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0F, 0.2F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));
         //混种剑类型2
-        SWORDCRAFT_TYPE2_IDLE = builder.nextAccessor("biped/living/bastardsword/sword_type2_idle", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_JUMP = builder.nextAccessor("biped/living/bastardsword/sword_type2_jump", (accessor) -> new StaticAnimation(false, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_FALL = builder.nextAccessor("biped/living/bastardsword/sword_type2_fall", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_KNEEL = builder.nextAccessor("biped/living/bastardsword/sword_type2_kneel", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_FLOAT = builder.nextAccessor("biped/living/bastardsword/sword_type2_float", (accessor) -> new StaticAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_WALK = builder.nextAccessor("biped/living/bastardsword/sword_type2_walk", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_RUN = builder.nextAccessor("biped/living/bastardsword/sword_type2_run", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_SNEAK = builder.nextAccessor("biped/living/bastardsword/sword_type2_sneak", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
-        SWORDCRAFT_TYPE2_SWIM = builder.nextAccessor("biped/living/bastardsword/sword_type2_swim", (accessor) -> new MovementAnimation(true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_IDLE = builder.nextAccessor("biped/living/bastardsword/sword_type2_idle", (accessor) -> new StaticAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_JUMP = builder.nextAccessor("biped/living/bastardsword/sword_type2_jump", (accessor) -> new StaticAnimation(0.1f,false, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_FALL = builder.nextAccessor("biped/living/bastardsword/sword_type2_fall", (accessor) -> new StaticAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_KNEEL = builder.nextAccessor("biped/living/bastardsword/sword_type2_kneel", (accessor) -> new StaticAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_FLOAT = builder.nextAccessor("biped/living/bastardsword/sword_type2_float", (accessor) -> new StaticAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_WALK = builder.nextAccessor("biped/living/bastardsword/sword_type2_walk", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_RUN = builder.nextAccessor("biped/living/bastardsword/sword_type2_run", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_SNEAK = builder.nextAccessor("biped/living/bastardsword/sword_type2_sneak", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
+        SWORDCRAFT_TYPE2_SWIM = builder.nextAccessor("biped/living/bastardsword/sword_type2_swim", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE2_AUTO1 = builder.nextAccessor("biped/combat/bastardsword/sword_type2_attack1", (accessor) ->
-                new ComboAttackAnimation(0.05f, 0.0f, 0.02f, 0.18f, 0.41f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new ComboAttackAnimation(0.1f, 0.0f, 0.02f, 0.18f, 0.41f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.setter(1))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0f)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false));
@@ -223,7 +225,7 @@ public class SwordCraftAnimations {
                                 .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
         SWORDCRAFT_TYPE2_DASH = builder.nextAccessor("biped/combat/bastardsword/sword_type2_dash", (accessor) ->
-                new DashAttackAnimation(0.05f, 0.0f, 0.05f, 0.16f, 0.36f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new DashAttackAnimation(0.05f, 0.0f, 0.05f, 0.16f, 0.36f, WeaponColliderPreset.SWORD_TYPE2_DASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
         SWORDCRAFT_TYPE2_AIRSLASH = builder.nextAccessor("biped/combat/bastardsword/sword_type2_airslash", (accessor) ->
                 new AirSlashAnimation(0.05f, 0.08f, 0.21f, 0.36f, null, Armatures.BIPED.get().toolR, accessor , Armatures.BIPED)
@@ -240,6 +242,12 @@ public class SwordCraftAnimations {
                 new AttackAnimation(0.05f, 0.05f, 0.0f, 0.0f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED).addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6f));
         SWORDCRAFT_TYPE2_NEUTRALIZED = builder.nextAccessor("biped/guard/bastardsword/sword_type2_neutralized", (accessor) ->
                 new LongHitAnimation(0.05f, accessor, Armatures.BIPED));
+        BRIGHTWINDSLASH = builder.nextAccessor("biped/skill/brightwindslash", (accessor) ->
+                new AttackAnimation(0.15f, accessor, Armatures.BIPED,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.1f, 0.25f, 0.25f, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.7f, 0.75f, 0.75f, 0.9f, 1.1f, 1.2f, Armatures.BIPED.get().toolR, null))
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
+                        .addProperty(StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER));
     }
 
 

@@ -7,7 +7,7 @@ import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import java.util.function.Function;
 
-public enum SwordWeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
+public enum WeaponCategories implements WeaponCategory, Function<Item, CapabilityItem.Builder> {
     BASTARDSWORD,
     CLAYMORE,
     SHORTSWORD,
@@ -26,7 +26,7 @@ public enum SwordWeaponCategories implements WeaponCategory, Function<Item, Capa
 
     final int id;
 
-    SwordWeaponCategories(){
+    WeaponCategories(){
         this.id = WeaponCategory.ENUM_MANAGER.assign(this);
     }
     @Override

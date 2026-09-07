@@ -143,7 +143,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     //implementation "curse.maven:epic-fight-mod-405076:7489617"
-    implementation "curse.maven:epic-fight-mod-405076:7633252"
+    //implementation "curse.maven:epic-fight-mod-405076:7633252"
+    implementation "curse.maven:epic-fight-mod-405076:8175609"
     annotationProcessor 'org.spongepowered:mixin:0.8.6:processor'
     implementation 'org.spongepowered:mixin:0.8.6'
     implementation 'org.ow2.asm:asm-commons:9.7'

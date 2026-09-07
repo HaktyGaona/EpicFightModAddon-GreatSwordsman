@@ -52,4 +52,6 @@ public class WeaponColliderPreset {
 
     public static final Collider COMBOSLASH = registerCollider(ResourceLocation.fromNamespaceAndPath(GreatSwordsman.MOD_ID, "comboslash"),
             new MultiOBBCollider(9, 2.2D, 0.8D, 2.2D, 0.0D, 1.0D, -1.6D));
+    public static final Collider SWORD_TYPE2_DASH = registerCollider(ResourceLocation.fromNamespaceAndPath(GreatSwordsman.MOD_ID, "sword_type2_dash"),
+            new MultiOBBCollider(9, 2.0D, 0.8D, 1.25D, 0.0D, 1.0D, -1.6D));
 }
