@@ -27,7 +27,7 @@ public final class WeaponCategoryPresets {
             .addMoveset(CapabilityItem.Styles.TWO_HAND, WeaponMovesets.BASTARDSWORD_2H)
             .addConditionals(
                     WeaponProviderConditionals.BASTARDSWORD_2H,
-                    WeaponProviderConditionals.BASTARDSWORD_1H
+                    WeaponProviderConditionals.BASTARDSWORD_DEFAULT
             )
     );
 

@@ -21,12 +21,13 @@ public class BastardSwordPostureCharge1To2 extends Skill {
         super.onInitiate(skillContainer, eventListener);
 
         eventListener.registerEvent(
-                EpicFightEventHooks.Player.CONSUME_SKILL, event -> {
-                    if (!event.getEntityPatch().isLogicalClient()) {
-                        ResourceLocation usedSkillId = event.getSkill().getRegistryName();
+                EpicFightEventHooks.Player.CAST_SKILL, event -> {
+                    if (!event.getPlayerPatch().isLogicalClient()) {
+                        Skill usedSkill = event.getSkillContainer().getSkill();
+                        ResourceLocation usedSkillId = usedSkill.getRegistryName();
                         if (usedSkillId != null && usedSkillId.equals(SwordCraftSkills.DRAW_SLASH.getId())) {
-                            this.switchToTwoHanded(skillContainer);
                             System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
+                            this.switchToTwoHanded(skillContainer);
                         }
                     }
                 },
@@ -45,6 +46,7 @@ public class BastardSwordPostureCharge1To2 extends Skill {
                 System.out.println("[GreatSwordsman] succeed 1 to 2");
                 serverExecutor.modifyLivingMotionByCurrentItem(false);
             }
+            else System.out.println("[GreatSwordsman] Posture has ready in state of 2H");
         });
     }
 

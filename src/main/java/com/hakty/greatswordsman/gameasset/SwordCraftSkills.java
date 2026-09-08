@@ -62,17 +62,15 @@ public class SwordCraftSkills {
             Skill.createBuilder(BastardSwordPostureCharge1To2::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
-                    .setResource(Skill.Resource.COOLDOWN)
                     .build(key));
 
     public static final DeferredHolder<Skill, BastardSwordPostureCharge2To1> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
             Skill.createBuilder(BastardSwordPostureCharge2To1::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
-                    .setResource(Skill.Resource.COOLDOWN)
                     .build(key));
 
-    public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> BLIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
+    public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> BRIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                     .setAnimations(SwordCraftAnimations.BRIGHTWINDSLASH)
                     .newProperty()

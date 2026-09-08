@@ -21,10 +21,10 @@ public final class WeaponProviderConditionals {
 
     public static final DeferredConditional BASTARDSWORD_1H = REGISTRY.registerConditional(
             "bastardsword_1h_wield_style",
-            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.TWO_HAND, SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H, SkillSlots.WEAPON_PASSIVE, SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, false));
+            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.ONE_HAND, SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H, SkillSlots.WEAPON_PASSIVE, SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, false));
 
     public static final DeferredConditional BASTARDSWORD_2H = REGISTRY.registerConditional(
             "bastardsword_2h_wield_style",
-            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.ONE_HAND, SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H, SkillSlots.WEAPON_PASSIVE, SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, false)
+            () -> ProviderConditional.createSkillDataKey(CapabilityItem.Styles.TWO_HAND, SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H, SkillSlots.WEAPON_PASSIVE, SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, false)
     );
 }
