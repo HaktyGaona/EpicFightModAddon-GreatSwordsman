@@ -15,11 +15,9 @@ import yesman.epicfight.api.animation.property.AnimationProperty.*;
 import yesman.epicfight.api.animation.property.MoveCoordFunctions;
 import yesman.epicfight.api.animation.types.*;
 import yesman.epicfight.api.animation.types.AttackAnimation;
-import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.api.utils.HitEntityList;
 import yesman.epicfight.api.utils.TimePairList;
 import yesman.epicfight.api.utils.math.ValueModifier;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.Armatures;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -85,6 +83,7 @@ public class SwordCraftAnimations {
     public static AnimationAccessor<AttackAnimation> COMBOSLASH_FAIL;
 
     public static AnimationAccessor<AttackAnimation> BRIGHTWINDSLASH;
+    public static AnimationAccessor<AttackAnimation> DRAW_SLASH;
 
     public static AnimationAccessor<StaticAnimation> STICK_IDLE;
     public static AnimationAccessor<ComboAttackAnimation> STICK_AUTO1;
@@ -239,15 +238,19 @@ public class SwordCraftAnimations {
         SWORDCRAFT_TYPE2_HIT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type2_hit1", (accessor) ->
                 new GuardAnimation(0.05f, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE2_DEFLECT1 = builder.nextAccessor("biped/guard/bastardsword/sword_type2_parrying1", (accessor) ->
-                new AttackAnimation(0.05f, 0.05f, 0.0f, 0.0f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED).addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6f));
+                new AttackAnimation(0.05f, 0.05f, 0.0f, 0.0f, 0.16f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.6f));
         SWORDCRAFT_TYPE2_NEUTRALIZED = builder.nextAccessor("biped/guard/bastardsword/sword_type2_neutralized", (accessor) ->
                 new LongHitAnimation(0.05f, accessor, Armatures.BIPED));
         BRIGHTWINDSLASH = builder.nextAccessor("biped/skill/brightwindslash", (accessor) ->
                 new AttackAnimation(0.15f, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.1f, 0.25f, 0.25f, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.25f, 0.7f, 0.7f, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.7f, 0.75f, 0.75f, 0.9f, 1.1f, 1.2f, Armatures.BIPED.get().toolR, null))
-                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
-                        .addProperty(StaticAnimationProperty.POSE_MODIFIER, Animations.ReusableSources.COMBO_ATTACK_DIRECTION_MODIFIER));
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
+
+        DRAW_SLASH = builder.nextAccessor("biped/skill/draw_slash", (accessor) ->
+                new AttackAnimation(0.05f, 0.08f, 0.1f, 0.21f, 0.36f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
     }
 
 

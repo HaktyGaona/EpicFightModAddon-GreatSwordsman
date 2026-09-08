@@ -2,6 +2,7 @@ package com.hakty.greatswordsman;
 
 import com.hakty.greatswordsman.gameasset.SwordCraftSkills;
 import com.hakty.greatswordsman.gameasset.SwordCraftSounds;
+import com.hakty.greatswordsman.registry.ModRegistries;
 import com.hakty.greatswordsman.skill.skillbookcompat.SwordCraftCompat;
 import com.hakty.greatswordsman.world.capability.item.WeaponCategoryPresets;
 import com.hakty.greatswordsman.world.item.WeaponAddonItems;
@@ -9,12 +10,18 @@ import com.hakty.greatswordsman.world.item.WeaponCreativeTab;
 
 import com.hakty.greatswordsman.gameasset.SwordCraftAnimations;
 
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yesman.epicfight.EpicFight;
+import yesman.epicfight.api.client.event.EpicFightClientEventHooks;
+import yesman.epicfight.api.event.EpicFightEventHooks;
+import yesman.epicfight.main.EpicFightSharedConstants;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 
@@ -23,23 +30,24 @@ public class GreatSwordsman {
     public static final String MOD_ID = "greatswordsman";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
+    public static ResourceLocation identifier(String name) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    }
     public GreatSwordsman(IEventBus bus) {
-        WeaponCreativeTab.register(bus);
         WeaponCategory.ENUM_MANAGER.registerEnumCls(MOD_ID, WeaponCategory.class);
 
-        SwordCraftSounds.register(bus);
-        SwordCraftSkills.REGISTRY.register(bus);
-        WeaponAddonItems.ITEMS.register(bus);
-        new SwordCraftCompat(bus);
+        ModRegistries.REGISTRIES.forEach(value -> value.register(bus));
 
         bus.addListener(SwordCraftAnimations::registerAnimations);
-        bus.addListener(this::commonStuff);
         bus.addListener(this::addCreative);
-    }
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-    }
 
-    public void commonStuff(FMLCommonSetupEvent event) {
-        event.enqueueWork(WeaponCategoryPresets::registerMovesets);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onEmergencyEscapeSkillCreation, 1);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onSwordMasterSkillCreation, 1);
+        if (EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("efn")) {
+            EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onParrySkillCreation, 2);
+        }
+        EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(SwordCraftCompat::onWeaponCategoryIconCreation, 1);
     }
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {}
+
 }

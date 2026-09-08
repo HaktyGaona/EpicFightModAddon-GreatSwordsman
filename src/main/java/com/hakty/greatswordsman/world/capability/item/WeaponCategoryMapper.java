@@ -11,25 +11,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeaponCategoryMapper {
-    private static final Map<WeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
+    private static final Map<MoreWeaponCategories, WeaponCategory> categoryMap = new HashMap<>();
 
     static {
-        categoryMap.put(WeaponCategories.BASTARDSWORD, CapabilityItem.WeaponCategories.LONGSWORD);
-        categoryMap.put(WeaponCategories.CLAYMORE, CapabilityItem.WeaponCategories.LONGSWORD);
-        categoryMap.put(WeaponCategories.PIKE, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.RANSEUR, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.GUISARME, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.CONCAVEHALBERD, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.LOCHABERAXE, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.SHORTSWORD, CapabilityItem.WeaponCategories.SWORD);
-        categoryMap.put(WeaponCategories.KATZBALGER, CapabilityItem.WeaponCategories.SWORD);
-        categoryMap.put(WeaponCategories.ZWEIHANDER, CapabilityItem.WeaponCategories.GREATSWORD);
-        categoryMap.put(WeaponCategories.FLAMEBLADEDSWORD, CapabilityItem.WeaponCategories.GREATSWORD);
-        categoryMap.put(WeaponCategories.BLADEDSTICK, CapabilityItem.WeaponCategories.SPEAR);
-        categoryMap.put(WeaponCategories.STILETTO, CapabilityItem.WeaponCategories.DAGGER);
+        categoryMap.put(MoreWeaponCategories.BASTARDSWORD, CapabilityItem.WeaponCategories.LONGSWORD);
+        categoryMap.put(MoreWeaponCategories.CLAYMORE, CapabilityItem.WeaponCategories.LONGSWORD);
+        categoryMap.put(MoreWeaponCategories.PIKE, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.RANSEUR, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.GUISARME, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.CONCAVEHALBERD, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.LOCHABERAXE, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.SHORTSWORD, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(MoreWeaponCategories.KATZBALGER, CapabilityItem.WeaponCategories.SWORD);
+        categoryMap.put(MoreWeaponCategories.ZWEIHANDER, CapabilityItem.WeaponCategories.GREATSWORD);
+        categoryMap.put(MoreWeaponCategories.FLAMEBLADEDSWORD, CapabilityItem.WeaponCategories.GREATSWORD);
+        categoryMap.put(MoreWeaponCategories.BLADEDSTICK, CapabilityItem.WeaponCategories.SPEAR);
+        categoryMap.put(MoreWeaponCategories.STILETTO, CapabilityItem.WeaponCategories.DAGGER);
     }
 
-    public static WeaponCapability.Builder apply(Item item, WeaponCategories category) {
+    public static WeaponCapability.Builder apply(Item item, MoreWeaponCategories category) {
         WeaponCategory mappedCategory = categoryMap.getOrDefault(category, category);
         try {
             Method applyMethod = mappedCategory.getClass().getMethod("apply", Item.class);

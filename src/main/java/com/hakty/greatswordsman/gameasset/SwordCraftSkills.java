@@ -2,7 +2,8 @@ package com.hakty.greatswordsman.gameasset;
 
 import com.hakty.greatswordsman.GreatSwordsman;
 import com.hakty.greatswordsman.skill.weaponinnate.ComboSlash;
-import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge;
+import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge1To2;
+import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge2To1;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
@@ -57,15 +58,15 @@ public class SwordCraftSkills {
                     .build(key));
 
 
-    public static final DeferredHolder<Skill, BastardSwordPostureCharge> BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H = REGISTRY.register("bastardsword_posture_charge_1h_to_2h", key ->
-            Skill.createBuilder(BastardSwordPostureCharge::new)
+    public static final DeferredHolder<Skill, BastardSwordPostureCharge1To2> BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H = REGISTRY.register("bastardsword_posture_charge_1h_to_2h", key ->
+            Skill.createBuilder(BastardSwordPostureCharge1To2::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
                     .setResource(Skill.Resource.COOLDOWN)
                     .build(key));
 
-    public static final DeferredHolder<Skill, BastardSwordPostureCharge> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
-            Skill.createBuilder(BastardSwordPostureCharge::new)
+    public static final DeferredHolder<Skill, BastardSwordPostureCharge2To1> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
+            Skill.createBuilder(BastardSwordPostureCharge2To1::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
                     .setResource(Skill.Resource.COOLDOWN)
@@ -80,5 +81,12 @@ public class SwordCraftSkills {
                     .newProperty()
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
                     .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(0.0f))
+                    .build(key));
+
+    public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> DRAW_SLASH = REGISTRY.register("draw_slash", key ->
+            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
+                    .setAnimations(SwordCraftAnimations.DRAW_SLASH)
+                    .newProperty()
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
                     .build(key));
 }

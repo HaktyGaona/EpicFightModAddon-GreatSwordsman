@@ -10,13 +10,14 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class WeaponCreativeTab {
+public final class WeaponCreativeTab {
+
     private WeaponCreativeTab() {}
 
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+    public static final DeferredRegister<CreativeModeTab> REGISTRY =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, GreatSwordsman.MOD_ID);
 
-    public static final Supplier<CreativeModeTab> SWORDS_TAB = CREATIVE_MODE_TABS.register("swords_tab", () ->
+    public static final Supplier<CreativeModeTab> SWORDS_TAB = REGISTRY.register("swords_tab", () ->
             CreativeModeTab.builder()
                     .icon(() -> new ItemStack(WeaponAddonItems.ZWEIHANDER.get()))
                     .title(Component.translatable("creativetab.swords.tab"))
@@ -32,7 +33,7 @@ public class WeaponCreativeTab {
                         output.accept(WeaponAddonItems.GUISARME.get());
                         output.accept(WeaponAddonItems.CONCAVEHALBERD.get());
                         output.accept(WeaponAddonItems.LOCHABERAXE.get());
-                        output.accept(WeaponAddonItems.BLADESTICK.get());
+                        output.accept(WeaponAddonItems.BLADEDSTICK.get());
                         output.accept(WeaponAddonItems.WARHAMMER.get());
                         output.accept(WeaponAddonItems.LUCERNEHAMMER.get());
                         output.accept(WeaponAddonItems.STILETTO.get());
@@ -41,6 +42,6 @@ public class WeaponCreativeTab {
     );
 
     public static void register (IEventBus eventBus){
-        CREATIVE_MODE_TABS.register(eventBus);
+        REGISTRY.register(eventBus);
     }
 }
