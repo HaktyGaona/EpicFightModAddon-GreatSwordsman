@@ -25,24 +25,6 @@ public class BastardSwordPostureCharge extends Skill {
     public void onInitiate(SkillContainer skillContainer, EntityEventListener eventListener) {
         super.onInitiate(skillContainer, eventListener);
 
-//        eventListener.registerEvent(
-//                EpicFightEventHooks.Player.CAST_SKILL, event -> {
-//                    if (!event.getPlayerPatch().isLogicalClient()) {
-//                        Skill usedSkill = event.getSkillContainer().getSkill();
-//                        ResourceLocation usedSkillId = usedSkill.getRegistryName();
-//                        if (usedSkillId != null && usedSkillId.equals(SwordCraftSkills.DRAW_SLASH.getId())) {
-//                            System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
-//                            this.switchToTwoHanded(skillContainer);
-//                        }
-//                        if (usedSkillId != null && usedSkillId.equals(SwordCraftSkills.BRIGHTWINDSLASH.getId())) {
-//                            System.out.println("[GreatSwordsman] Ready to switch 2 to 1");
-//                            this.switchToOneHanded(skillContainer);
-//                        }
-//                    }
-//                },
-//                this
-//        );
-
         eventListener.registerEvent(
                 EpicFightEventHooks.Animation.END, event -> {
                     if (!skillContainer.getExecutor().getOriginal().level().isClientSide()) {
@@ -50,7 +32,7 @@ public class BastardSwordPostureCharge extends Skill {
                             System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
                             this.switchToTwoHanded(skillContainer);
                         }
-                        if (SwordCraftAnimations.BRIGHTWINDSLASH_PART2.equals(event.getAnimation())) {
+                        if (SwordCraftAnimations.BRIGHTWINDSLASH.equals(event.getAnimation())) {
                             System.out.println("[GreatSwordsman] Ready to switch 2 to 1");
                             this.switchToOneHanded(skillContainer);
                         }

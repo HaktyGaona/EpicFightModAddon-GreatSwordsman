@@ -24,37 +24,12 @@ import java.util.List;
 public class BrightWindSlashSkill extends WeaponInnateSkill {
 
     public final AssetAccessor<? extends AttackAnimation> first;
-    public final AssetAccessor<? extends AttackAnimation> second;
 
     public BrightWindSlashSkill(WeaponInnateSkill.Builder<?> builder) {
         super(builder);
-        this.first = SwordCraftAnimations.BRIGHTWINDSLASH_PART1;
-        this.second = SwordCraftAnimations.BRIGHTWINDSLASH_PART2;
+        this.first = SwordCraftAnimations.BRIGHTWINDSLASH;
     }
 
-    @Override
-    public void onInitiate(SkillContainer container, EntityEventListener eventListener) {
-        super.onInitiate(container, eventListener);
-
-        eventListener.registerEvent(EpicFightEventHooks.Animation.END, event -> {
-            if (!container.getExecutor().getOriginal().level().isClientSide()) {
-                if (this.first.equals(event.getAnimation())) {
-                    List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
-                    if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
-                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                        container.getExecutor().reserveAnimation(this.second);
-                        container.getExecutor().getCurrentlyActuallyHitEntities().clear();
-                        System.out.println("[GreatSwordsman]: BrightWindSlash part1 hited");
-                    }
-                    else {
-                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
-                        container.getExecutor().reserveAnimation(this.second);
-                        System.out.println("[GreatSwordsman]: BrightWindSlash part1 not hited");
-                    }
-                }
-            }
-        }, this);
-    }
     @Override
     public void executeOnServer(SkillContainer container, CompoundTag arguments) {
         container.getExecutor().playAnimationSynchronized(this.first, 0);
@@ -78,7 +53,7 @@ public class BrightWindSlashSkill extends WeaponInnateSkill {
     @Override
     public WeaponInnateSkill registerPropertiesToAnimation() {
         this.first.get().phases[0].addProperties(this.properties.get(0).entrySet());
-        this.second.get().phases[0].addProperties(this.properties.get(1).entrySet());
+        this.first.get().phases[1].addProperties(this.properties.get(1).entrySet());
         return this;
     }
 }
