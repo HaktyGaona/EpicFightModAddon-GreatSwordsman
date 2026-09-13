@@ -26,14 +26,14 @@ public class BastardSwordPostureCharge extends Skill {
         super.onInitiate(skillContainer, eventListener);
 
         eventListener.registerEvent(
-                EpicFightEventHooks.Animation.END, event -> {
+                EpicFightEventHooks.Animation.ATTACK_PHASE_END, event -> {
                     if (!skillContainer.getExecutor().getOriginal().level().isClientSide()) {
                         if (SwordCraftAnimations.DRAW_SLASH.equals(event.getAnimation())) {
-                            System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
+//                            System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
                             this.switchToTwoHanded(skillContainer);
                         }
                         if (SwordCraftAnimations.BRIGHTWINDSLASH.equals(event.getAnimation())) {
-                            System.out.println("[GreatSwordsman] Ready to switch 2 to 1");
+//                            System.out.println("[GreatSwordsman] Ready to switch 2 to 1");
                             this.switchToOneHanded(skillContainer);
                         }
                     }
