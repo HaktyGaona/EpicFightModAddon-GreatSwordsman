@@ -62,6 +62,7 @@ public class ComboSlash extends WeaponInnateSkill {
                 if (SwordCraftAnimations.COMBOSLASH_2.equals(event.getAnimation())) {
                     List<LivingEntity> hurtEntities = container.getExecutor().getCurrentlyActuallyHitEntities();
                     if (!hurtEntities.isEmpty() && hurtEntities.getFirst().isAlive()) {
+                        container.getExecutor().getServerAnimator().getPlayerFor(null).reset();
                         container.getExecutor().reserveAnimation(this.third);
                         container.getExecutor().getCurrentlyActuallyHitEntities().clear();
                         System.out.println("2 to 3 yes");

@@ -1,6 +1,7 @@
 package com.hakty.greatswordsman.gameasset;
 
 import com.hakty.greatswordsman.GreatSwordsman;
+import com.hakty.greatswordsman.skill.weaponinnate.BrightWindSlashSkill;
 import com.hakty.greatswordsman.skill.weaponinnate.ComboSlash;
 import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -64,15 +65,8 @@ public class SwordCraftSkills {
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
                     .build(key));
 
-//    public static final DeferredHolder<Skill, BastardSwordPostureCharge2To1> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
-//            Skill.createBuilder(BastardSwordPostureCharge2To1::new)
-//                    .setCategory(SkillCategories.WEAPON_PASSIVE)
-//                    .setActivateType(Skill.ActivateType.ONE_SHOT)
-//                    .build(key));
-
-    public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> BRIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
-            SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
-                    .setAnimations(SwordCraftAnimations.BRIGHTWINDSLASH)
+    public static final DeferredHolder<Skill, BrightWindSlashSkill> BRIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
+            WeaponInnateSkill.createWeaponInnateBuilder(BrightWindSlashSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                     .newProperty()
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
                     .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(3))
@@ -83,7 +77,7 @@ public class SwordCraftSkills {
                     .newProperty()
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
                     .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(10))
-                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
                     .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100.0f))
                     .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))

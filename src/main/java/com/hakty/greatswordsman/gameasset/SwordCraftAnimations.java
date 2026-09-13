@@ -83,6 +83,8 @@ public class SwordCraftAnimations {
     public static AnimationAccessor<AttackAnimation> COMBOSLASH_FAIL;
 
     public static AnimationAccessor<AttackAnimation> BRIGHTWINDSLASH;
+    public static AnimationAccessor<AttackAnimation> BRIGHTWINDSLASH_PART1;
+    public static AnimationAccessor<AttackAnimation> BRIGHTWINDSLASH_PART2;
     public static AnimationAccessor<AttackAnimation> DRAW_SLASH;
 
     public static AnimationAccessor<StaticAnimation> STICK_IDLE;
@@ -247,6 +249,13 @@ public class SwordCraftAnimations {
                         new AttackAnimation.Phase(0.0f, 0.05f, 0.25f, 0.7f, 0.7f, Armatures.BIPED.get().toolR, null),
                         new AttackAnimation.Phase(0.7f, 0.75f, 0.75f, 0.9f, 1.1f, Float.MAX_VALUE, Armatures.BIPED.get().toolR, null))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
+        BRIGHTWINDSLASH_PART1 = builder.nextAccessor("biped/skill/brightwindslash_part1", accessor ->
+                new AttackAnimation(0.1f, 0.05f, 0.05f, 0.25f, 0.25f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
+        BRIGHTWINDSLASH_PART2 = builder.nextAccessor("biped/skill/brightwindslash_part2", accessor ->
+                new AttackAnimation(0.05f, 0.0f, 0.25f, 0.4f, 0.6f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                        .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
+
 
         DRAW_SLASH = builder.nextAccessor("biped/skill/draw_slash", (accessor) ->
                 new AttackAnimation(0.05f, 0.08f, 0.1f, 0.21f, 0.36f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
