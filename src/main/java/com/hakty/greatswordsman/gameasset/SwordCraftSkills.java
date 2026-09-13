@@ -58,7 +58,7 @@ public class SwordCraftSkills {
                     .build(key));
 
 
-    public static final DeferredHolder<Skill, BastardSwordPostureCharge> BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H = REGISTRY.register("bastardsword_posture_charge_1h_to_2h", key ->
+    public static final DeferredHolder<Skill, BastardSwordPostureCharge> BASTARDSWORD_POSTURE_CHARGE = REGISTRY.register("bastardsword_posture_charge", key ->
             Skill.createBuilder(BastardSwordPostureCharge::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)

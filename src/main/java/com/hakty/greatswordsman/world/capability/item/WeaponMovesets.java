@@ -29,7 +29,7 @@ public class WeaponMovesets {
             .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
             .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
             .addInnateSkill((itemStack, playerPatch) -> SwordCraftSkills.DRAW_SLASH.get())
-            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H)
+            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE)
 
     );
     public static final DeferredMoveset BASTARDSWORD_2H = REGISTRY.registerMoveset("bastardsword_2h", () -> Moveset.builder()
@@ -46,7 +46,7 @@ public class WeaponMovesets {
             .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
             .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_AUTO2)
             .addInnateSkill((itemStack, playerPatch) -> SwordCraftSkills.BRIGHTWINDSLASH.get())
-            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H)
+            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE)
     );
 
 
