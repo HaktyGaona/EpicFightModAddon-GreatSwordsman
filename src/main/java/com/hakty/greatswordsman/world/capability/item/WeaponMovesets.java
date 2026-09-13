@@ -46,7 +46,7 @@ public class WeaponMovesets {
             .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
             .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_AUTO2)
             .addInnateSkill((itemStack, playerPatch) -> SwordCraftSkills.BRIGHTWINDSLASH.get())
-            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H)
+            .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H)
     );
 
 

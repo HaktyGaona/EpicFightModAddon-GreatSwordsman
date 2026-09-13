@@ -2,8 +2,7 @@ package com.hakty.greatswordsman.gameasset;
 
 import com.hakty.greatswordsman.GreatSwordsman;
 import com.hakty.greatswordsman.skill.weaponinnate.ComboSlash;
-import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge1To2;
-import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge2To1;
+import com.hakty.greatswordsman.skill.weaponpassive.BastardSwordPostureCharge;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import yesman.epicfight.api.animation.property.AnimationProperty.AttackPhaseProperty;
@@ -20,6 +19,7 @@ import yesman.epicfight.world.damagesource.StunType;
 import java.util.Set;
 
 public class SwordCraftSkills {
+    private SwordCraftSkills() {}
 
     public static final DeferredRegister<Skill> REGISTRY = DeferredRegister.create(EpicFightRegistries.Keys.SKILL, GreatSwordsman.MOD_ID);
 
@@ -58,33 +58,45 @@ public class SwordCraftSkills {
                     .build(key));
 
 
-    public static final DeferredHolder<Skill, BastardSwordPostureCharge1To2> BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H = REGISTRY.register("bastardsword_posture_charge_1h_to_2h", key ->
-            Skill.createBuilder(BastardSwordPostureCharge1To2::new)
+    public static final DeferredHolder<Skill, BastardSwordPostureCharge> BASTARDSWORD_POSTURE_CHARGE_1H_TO_2H = REGISTRY.register("bastardsword_posture_charge_1h_to_2h", key ->
+            Skill.createBuilder(BastardSwordPostureCharge::new)
                     .setCategory(SkillCategories.WEAPON_PASSIVE)
                     .setActivateType(Skill.ActivateType.ONE_SHOT)
                     .build(key));
 
-    public static final DeferredHolder<Skill, BastardSwordPostureCharge2To1> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
-            Skill.createBuilder(BastardSwordPostureCharge2To1::new)
-                    .setCategory(SkillCategories.WEAPON_PASSIVE)
-                    .setActivateType(Skill.ActivateType.ONE_SHOT)
-                    .build(key));
+//    public static final DeferredHolder<Skill, BastardSwordPostureCharge2To1> BASTARDSWORD_POSTURE_CHARGE_2H_TO_1H = REGISTRY.register("bastardsword_posture_charge_2h_to_1h", key ->
+//            Skill.createBuilder(BastardSwordPostureCharge2To1::new)
+//                    .setCategory(SkillCategories.WEAPON_PASSIVE)
+//                    .setActivateType(Skill.ActivateType.ONE_SHOT)
+//                    .build(key));
 
     public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> BRIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                     .setAnimations(SwordCraftAnimations.BRIGHTWINDSLASH)
                     .newProperty()
-                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(3))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
                     .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(0.0f))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .newProperty()
-                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)
-                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(0.0f))
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(10))
+                    .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.NEUTRALIZE)
+                    .addProperty(AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.setter(100.0f))
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .build(key));
 
     public static final DeferredHolder<Skill, SimpleWeaponInnateSkill> DRAW_SLASH = REGISTRY.register("draw_slash", key ->
             SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                     .setAnimations(SwordCraftAnimations.DRAW_SLASH)
                     .newProperty()
+                    .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
+                    .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.multiplier(2.0f))
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                    .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
+                    .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .build(key));
 }

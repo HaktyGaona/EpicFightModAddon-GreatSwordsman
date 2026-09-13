@@ -8,10 +8,11 @@ import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
-public class BastardSwordPostureCharge2To1 extends Skill {
+public class BastardSwordPostureCharge extends Skill {
 
-    public BastardSwordPostureCharge2To1(SkillBuilder<?> builder) {
+    public BastardSwordPostureCharge(SkillBuilder<?> builder) {
         super(builder);
     }
 
@@ -24,26 +25,43 @@ public class BastardSwordPostureCharge2To1 extends Skill {
                     if (!event.getPlayerPatch().isLogicalClient()) {
                         Skill usedSkill = event.getSkillContainer().getSkill();
                         ResourceLocation usedSkillId = usedSkill.getRegistryName();
-                        System.out.println("[GreatSwordsman] Gatting 2 to 1 Res ID...");
+                        if (usedSkillId != null && usedSkillId.equals(SwordCraftSkills.DRAW_SLASH.getId())) {
+                            System.out.println("[GreatSwordsman] Ready to switch 1 to 2");
+                            this.switchToTwoHanded(skillContainer);
+                        }
                         if (usedSkillId != null && usedSkillId.equals(SwordCraftSkills.BRIGHTWINDSLASH.getId())) {
-                            this.switchToOneHanded(skillContainer);
                             System.out.println("[GreatSwordsman] Ready to switch 2 to 1");
+                            this.switchToOneHanded(skillContainer);
                         }
                     }
                 },
                 this
         );
     }
-
     private void switchToOneHanded(SkillContainer container) {
         container.runOnServer(serverExecutor -> {
-            // 当前处于 2H 姿态时才切换
             if (container.getDataManager().getDataValue(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H)) {
-                // 离开 2H 姿态
-                // 进入 1H 姿态
                 container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, false);
+                container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, true);
                 System.out.println("[GreatSwordsman] succeed 2 to 1");
             }
         });
+    }
+
+    private void switchToTwoHanded(SkillContainer container) {
+        container.runOnServer(serverExecutor -> {
+            if (container.getDataManager().getDataValue(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H)) {
+                container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, false);
+                container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, true);
+                System.out.println("[GreatSwordsman] succeed 1 to 2");
+                serverExecutor.modifyLivingMotionByCurrentItem(false);
+            }
+            else System.out.println("[GreatSwordsman] Posture has ready in state of 2H");
+        });
+    }
+
+    @Override
+    public boolean shouldDeactivateAutomatically(PlayerPatch<?> executer) {
+        return true;
     }
 }

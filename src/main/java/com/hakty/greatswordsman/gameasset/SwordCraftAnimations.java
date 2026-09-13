@@ -105,19 +105,19 @@ public class SwordCraftAnimations {
         SWORDCRAFT_TYPE1_WALK = builder.nextAccessor("biped/living/bastardsword/sword_type1_walk", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE1_RUN = builder.nextAccessor("biped/living/bastardsword/sword_type1_run", (accessor) -> new MovementAnimation(0.1f,true, accessor, Armatures.BIPED));
         SWORDCRAFT_TYPE1_AUTO1 = builder.nextAccessor("biped/combat/bastardsword/sword_type1_attack1", (accessor) ->
-                new ComboAttackAnimation(0.05f, 0.08f, 0.1f, 0.33f, 0.5f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new ComboAttackAnimation(0.02f, 0.08f, 0.1f, 0.33f, 0.4f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
                         .addProperty(ActionAnimationProperty.CANCELABLE_MOVE, true));
         SWORDCRAFT_TYPE1_AUTO2 = builder.nextAccessor("biped/combat/bastardsword/sword_type1_attack2", (accessor) ->
-                new ComboAttackAnimation(0.05f, 0.14f, 0.2f, 0.3f, 0.5f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new ComboAttackAnimation(0.05f, 0.09f, 0.1f, 0.3f, 0.35f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, true));
         SWORDCRAFT_TYPE1_AUTO3 = builder.nextAccessor("biped/combat/bastardsword/sword_type1_attack3", (accessor) ->
-                new ComboAttackAnimation(0.05f, 0.05f, 0.15f, 0.36f, 0.6f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new ComboAttackAnimation(0.05f, 0.21f, 0.23f, 0.5f, 0.6f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6F)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, true));
         SWORDCRAFT_TYPE1_DASH = builder.nextAccessor("biped/combat/bastardsword/sword_type1_dash", (accessor) ->
-                new DashAttackAnimation(0.15f, 0.03f, 0.1f, 0.2f, 0.4f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
+                new DashAttackAnimation(0.05f, 0.03f, 0.1f, 0.2f, 0.4f, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f)
                         .addProperty(AttackAnimationProperty.CANCELABLE_MOVE, false));
         SWORDCRAFT_TYPE1_AIRSLASH = builder.nextAccessor("biped/combat/bastardsword/sword_type1_airslash", (accessor) ->
@@ -244,8 +244,8 @@ public class SwordCraftAnimations {
                 new LongHitAnimation(0.05f, accessor, Armatures.BIPED));
         BRIGHTWINDSLASH = builder.nextAccessor("biped/skill/brightwindslash", (accessor) ->
                 new AttackAnimation(0.15f, accessor, Armatures.BIPED,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.25f, 0.7f, 0.7f, Armatures.BIPED.get().toolR, null),
-                        new AttackAnimation.Phase(0.7f, 0.75f, 0.75f, 0.9f, 1.1f, 1.2f, Armatures.BIPED.get().toolR, null))
+                        new AttackAnimation.Phase(0.0f, 0.05f, 0.25f, 0.7f, 0.7f, Armatures.BIPED.get().toolR, null),
+                        new AttackAnimation.Phase(0.7f, 0.75f, 0.75f, 0.9f, 1.1f, Float.MAX_VALUE, Armatures.BIPED.get().toolR, null))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.6f));
 
         DRAW_SLASH = builder.nextAccessor("biped/skill/draw_slash", (accessor) ->
