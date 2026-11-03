@@ -23,12 +23,12 @@
       }
     ]
   },
-  "entity.weapon.sword_slash": {
-    "subtitle": "subtitles.greatswordsman.sword_slash",
+  "entity.weapon.longsword_slash": {
+    "subtitle": "subtitles.greatswordsman.longsword_slash",
     "sounds": [
-      {"name": "greatswordsman:entity/weapon/sword_slash1", "stream": true},
-      {"name": "greatswordsman:entity/weapon/sword_slash2", "stream": true},
-      {"name": "greatswordsman:entity/weapon/sword_slash3", "stream": true}
+      {"name": "greatswordsman:entity/weapon/longsword_slash1", "stream": true},
+      {"name": "greatswordsman:entity/weapon/longsword_slash2", "stream": true},
+      {"name": "greatswordsman:entity/weapon/longsword_slash3", "stream": true}
     ]
   },
   "entity.weapon.sword_guard": {
@@ -44,6 +44,22 @@
     "sounds": [
       {
         "name": "greatswordsman:entity/weapon/poise", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.brightwindslash1": {
+    "subtitle": "subtitles.greatswordsman.brightwindslash1",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/brightwindslash1", "stream": true
+      }
+    ]
+  },
+  "entity.weapon.brightwindslash2": {
+    "subtitle": "subtitles.greatswordsman.brightwindslash2",
+    "sounds": [
+      {
+        "name": "greatswordsman:entity/weapon/brightwindslash2", "stream": true
       }
     ]
   }

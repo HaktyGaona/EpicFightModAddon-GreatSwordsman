@@ -68,6 +68,7 @@ public class SwordCraftSkills {
     public static final DeferredHolder<Skill, BrightWindSlashSkill> BRIGHTWINDSLASH = REGISTRY.register("bright_wind_slash", key ->
             WeaponInnateSkill.createWeaponInnateBuilder(BrightWindSlashSkill::new).setCategory(SkillCategories.WEAPON_INNATE)
                     .newProperty()
+                    .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.BRIGHTWINDSLASH1.get())
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
                     .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(3))
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.SHORT)
@@ -75,6 +76,7 @@ public class SwordCraftSkills {
                     .addProperty(AttackPhaseProperty.EXTRA_DAMAGE, Set.of(ExtraDamageInstance.SWEEPING_EDGE_ENCHANTMENT.create()))
                     .addProperty(AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
                     .newProperty()
+                    .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.BRIGHTWINDSLASH2.get())
                     .addProperty(AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(3))
                     .addProperty(AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(10))
                     .addProperty(AttackPhaseProperty.STUN_TYPE, StunType.KNOCKDOWN)

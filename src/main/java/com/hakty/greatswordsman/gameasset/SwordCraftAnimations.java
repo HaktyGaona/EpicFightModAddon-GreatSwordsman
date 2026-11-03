@@ -2,7 +2,6 @@ package com.hakty.greatswordsman.gameasset;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 
 import com.hakty.greatswordsman.GreatSwordsman;
 
@@ -142,7 +141,7 @@ public class SwordCraftAnimations {
         COMBOSLASH_1 = builder.nextAccessor("biped/skill/comboslash1", (accessor) ->
                 new AttackAnimation(0.1f, 0.02f, 0.06f, 0.26f, 0.26f, WeaponColliderPreset.COMBOSLASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0f)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
@@ -153,7 +152,7 @@ public class SwordCraftAnimations {
                         .addState(EntityState.MOVEMENT_LOCKED, true));
         COMBOSLASH_2 = builder.nextAccessor("biped/skill/comboslash2", (accessor) ->
                 new AttackAnimation(0.1f, 0.02f, 0.05f, 0.26f, 0.26f, WeaponColliderPreset.COMBOSLASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.0F)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
@@ -164,7 +163,7 @@ public class SwordCraftAnimations {
                         .addState(EntityState.MOVEMENT_LOCKED, true));
         COMBOSLASH_3 = builder.nextAccessor("biped/skill/comboslash3", (accessor) ->
                 new AttackAnimation(0.1f, 0.02f, 0.05f, 0.26f, 0.26f, WeaponColliderPreset.COMBOSLASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.0f)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
@@ -175,7 +174,7 @@ public class SwordCraftAnimations {
                         .addState(EntityState.MOVEMENT_LOCKED, true));
         COMBOSLASH_4 = builder.nextAccessor("biped/skill/comboslash4", (accessor) ->
                 new AttackAnimation(0.1f, 0.02f, 0.05f, 0.26f, 0.26f, WeaponColliderPreset.COMBOSLASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 3.0f)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
@@ -187,7 +186,7 @@ public class SwordCraftAnimations {
         COMBOSLASH_5 = builder.nextAccessor("biped/skill/comboslash5", (accessor) ->
                 new AttackAnimation(0.02f, 0.0f, 0.05f, 0.26f, 0.26f, WeaponColliderPreset.COMBOSLASH, Armatures.BIPED.get().rootJoint, accessor, Armatures.BIPED)
                         .addProperty(AttackPhaseProperty.HIT_PRIORITY, HitEntityList.Priority.TARGET)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 2.0f)
                         .addProperty(ActionAnimationProperty.COORD_SET_BEGIN, MoveCoordFunctions.TRACE_ORIGIN_AS_DESTINATION)
@@ -198,7 +197,7 @@ public class SwordCraftAnimations {
                         .addState(EntityState.MOVEMENT_LOCKED, true));
         COMBOSLASH_FAIL= builder.nextAccessor("biped/skill/comboslash_fail", (accessor) ->
                 new AttackAnimation(0.05F, 0.05F, 0.1F, 0.5F, 0.6F, null, Armatures.BIPED.get().toolR, accessor, Armatures.BIPED)
-                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.SWORD_SLASH.get())
+                        .addProperty(AttackPhaseProperty.SWING_SOUND, SwordCraftSounds.LONGSWORD_SLASH.get())
                         .addProperty(AttackPhaseProperty.HIT_SOUND, SwordCraftSounds.SWORD_WHACK.get())
                         .addProperty(ActionAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0F, 0.2F))
                         .addProperty(AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.4F));

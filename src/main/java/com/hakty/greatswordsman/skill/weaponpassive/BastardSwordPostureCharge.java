@@ -2,8 +2,6 @@ package com.hakty.greatswordsman.skill.weaponpassive;
 
 import com.hakty.greatswordsman.gameasset.SwordCraftAnimations;
 import com.hakty.greatswordsman.gameasset.SwordCraftSkillDataKeys;
-import com.hakty.greatswordsman.gameasset.SwordCraftSkills;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import yesman.epicfight.api.event.EntityEventListener;
@@ -46,7 +44,7 @@ public class BastardSwordPostureCharge extends Skill {
             if (container.getDataManager().getDataValue(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H)) {
                 container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, false);
                 container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, true);
-                System.out.println("[GreatSwordsman] succeed 2 to 1");
+//                System.out.println("[GreatSwordsman] succeed 2 to 1");
                 this.refreshWeaponCapability(serverExecutor);
             }
         });
@@ -57,7 +55,7 @@ public class BastardSwordPostureCharge extends Skill {
             if (container.getDataManager().getDataValue(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H)) {
                 container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_1H, false);
                 container.getDataManager().setDataSync(SwordCraftSkillDataKeys.POSTURE_CHARGE_2H, true);
-                System.out.println("[GreatSwordsman] succeed 1 to 2");
+//                System.out.println("[GreatSwordsman] succeed 1 to 2");
                 this.refreshWeaponCapability(serverExecutor);
             }
         });
