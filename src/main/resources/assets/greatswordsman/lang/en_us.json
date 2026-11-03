@@ -17,8 +17,11 @@
   "item.greatswordsman.stylet": "Stiletto Template",
   "skill.greatswordsman.comboslash": "ComboSlash",
   "skill.greatswordsman.comboslash.tooltip": "Attack five times, and stun the target on the first hit. \nDefeating the target will interrupt the combo attack.\nThe target will be knocked down after the fifth hit.",
-  "skill.greatswordsman.advanced_parrying": "Counterattack",
-  "skill.greatswordsman.advanced_parrying.tooltip": "Increase the duration of your blocking window and shorten the time interval between blocks.\n\nLaunch a counterattack towards the front after deflect success.",
+  "skill.greatswordsman.draw_slash": "DrawSlash",
+  "skill.greatswordsman.draw_slash.tooltip": "After performing: posture transition.",
+  "skill.greatswordsman.bright_wind_slash": "BrightWindSlash",
+  "skill.greatswordsman.bright_wind_slash.tooltip": "Attack twice. \nAfter performing: posture transition. \nWhen performing: Gain 1.5s of Stun Immunity and Resistance.",
+
   "weapon_category.epicfight.shortsword": "Shortsword",
   "weapon_category.epicfight.katzbalger": "Katzbalger",
   "weapon_category.epicfight.bastardsword": "Bastardsword",

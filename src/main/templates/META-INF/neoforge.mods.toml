@@ -91,7 +91,7 @@ config="mixins.${mod_id}.json"
 [[dependencies.${mod_id}]]
     modId="epicfight"
     mandatory=true
-    versionRange="[21.15.1,)"
+    versionRange="[21.17.1,)"
     ordering="AFTER"
     side="BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

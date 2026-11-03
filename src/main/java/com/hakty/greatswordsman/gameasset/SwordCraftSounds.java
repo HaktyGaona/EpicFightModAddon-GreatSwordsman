@@ -14,9 +14,10 @@ public class SwordCraftSounds {
             DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, GreatSwordsman.MOD_ID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_HIT = registerActionSound("entity.weapon.sword_hit");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BRIGHTWINDSLASH1 = registerActionSound("entity.weapon.brightwindslash1");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BRIGHTWINDSLASH2 = registerActionSound("entity.weapon.brightwindslash2");
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_WHACK = registerActionSound("entity.weapon.sword_whack");
-    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SWING = registerActionSound("entity.weapon.sword_swing");
-    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SLASH = registerActionSound("entity.weapon.sword_slash");
+    public static final DeferredHolder<SoundEvent, SoundEvent> LONGSWORD_SLASH = registerActionSound("entity.weapon.longsword_slash");
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_GUARD = registerActionSound("entity.weapon.sword_guard");
     public static final DeferredHolder<SoundEvent, SoundEvent> POISE = registerActionSound("entity.weapon.poise");
 
