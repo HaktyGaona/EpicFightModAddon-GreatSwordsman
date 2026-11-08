@@ -26,7 +26,7 @@ public class ParryingSkillMixin {
             remap = false
     )
     private int greatswordsman$shrinkParryWindowMultiplier(int original) {
-        return 2;
+        return 1;
     }
 
     @Redirect(
