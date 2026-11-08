@@ -35,9 +35,9 @@ public class GreatSwordsman {
 
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onEmergencyEscapeSkillCreation, 1);
         EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onSwordMasterSkillCreation, 1);
-        if (EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("efn")) {
-            EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onParrySkillCreation, 2);
-        }
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onParrySkillCreation, 1);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onGuardSkillCreation, 1);
+        EpicFightEventHooks.Registry.MODIFY_SKILL_BUILDER.registerEvent(SwordCraftCompat::onImpactguardSkillCreation, 1);
         EpicFightClientEventHooks.Registry.WEAPON_CATEGORY_ICON.registerEvent(SwordCraftCompat::onWeaponCategoryIconCreation, 1);
     }
     private void addCreative(BuildCreativeModeTabContentsEvent event) {}

@@ -3,6 +3,7 @@ package com.hakty.greatswordsman.world.capability.item;
 import com.hakty.greatswordsman.GreatSwordsman;
 import com.hakty.greatswordsman.gameasset.SwordCraftSounds;
 import com.hakty.greatswordsman.gameasset.WeaponColliderPreset;
+import yesman.epicfight.EpicFight;
 import yesman.epicfight.registry.deferred.ItemPresetRegister;
 import yesman.epicfight.registry.deferred.holders.DeferredWeapon;
 import yesman.epicfight.registry.entries.EpicFightSounds;
@@ -27,6 +28,7 @@ public final class WeaponCategoryPresets {
                     WeaponProviderConditionals.BASTARDSWORD_2H,
                     WeaponProviderConditionals.BASTARDSWORD_1H
             )
+            .addTag(EpicFight.identifier("longsword"))
     );
 
 }
