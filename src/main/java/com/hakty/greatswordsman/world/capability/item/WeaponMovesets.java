@@ -26,8 +26,8 @@ public class WeaponMovesets {
                     LivingMotions.WALK, LivingMotions.CHASE)
             .addLivingMotionModifier(LivingMotions.RUN, SwordCraftAnimations.SWORDCRAFT_TYPE1_RUN)
             .addLivingMotionModifier(LivingMotions.BLOCK, SwordCraftAnimations.SWORDCRAFT_TYPE1_GUARD)
-            .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
-            .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
+//            .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
+//            .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
             .addInnateSkill((itemStack, playerPatch) -> SwordCraftSkills.DRAW_SLASH.get())
             .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE)
 
@@ -43,8 +43,8 @@ public class WeaponMovesets {
             .addLivingMotionsRecursive(SwordCraftAnimations.SWORDCRAFT_TYPE2_FALL, LivingMotions.FALL)
             .addLivingMotionModifier(LivingMotions.RUN, SwordCraftAnimations.SWORDCRAFT_TYPE2_RUN)
             .addLivingMotionModifier(LivingMotions.BLOCK, SwordCraftAnimations.SWORDCRAFT_TYPE2_GUARD)
-            .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
-            .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_AUTO2)
+//            .addGuardAnimations(GuardSkill.BlockType.GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
+//            .addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, SwordCraftAnimations.SWORDCRAFT_TYPE2_AUTO2)
             .addInnateSkill((itemStack, playerPatch) -> SwordCraftSkills.BRIGHTWINDSLASH.get())
             .setPassiveSkill(SwordCraftSkills.BASTARDSWORD_POSTURE_CHARGE)
     );
