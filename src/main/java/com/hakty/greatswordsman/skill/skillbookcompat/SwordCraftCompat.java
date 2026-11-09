@@ -142,6 +142,9 @@ public class SwordCraftCompat{
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","impact_guard"))) {
             GuardSkill.Builder builder = (ImpactGuardSkill.Builder) event.getSkillBuilder();
             builder
+                    .addGuardMotion(MoreWeaponCategories.BASTARDSWORD, (item, player) ->
+                            item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ?
+                                    SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1 : SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
                     .addAdvancedGuardMotion(MoreWeaponCategories.BASTARDSWORD, (item, player) ->
                             item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ?
                                     SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1 : SwordCraftAnimations.SWORDCRAFT_TYPE2_HIT1)
@@ -149,16 +152,22 @@ public class SwordCraftCompat{
                             item.getStyle(player) == CapabilityItem.Styles.ONE_HAND ?
                                     SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED : SwordCraftAnimations.SWORDCRAFT_TYPE2_NEUTRALIZED)
 
+                    .addGuardMotion(MoreWeaponCategories.CLAYMORE, (item, player) ->
+                            SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addAdvancedGuardMotion(MoreWeaponCategories.CLAYMORE, (item, player) ->
                             SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addGuardBreakMotion(MoreWeaponCategories.CLAYMORE, (item, player) ->
                             SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
 
+                    .addGuardMotion(MoreWeaponCategories.ZWEIHANDER, (item, player) ->
+                            SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addAdvancedGuardMotion(MoreWeaponCategories.ZWEIHANDER, (item, player) ->
                             SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addGuardBreakMotion(MoreWeaponCategories.ZWEIHANDER, (item, player) ->
                             SwordCraftAnimations.SWORDCRAFT_TYPE1_NEUTRALIZED)
 
+                    .addGuardMotion(MoreWeaponCategories.FLAMEBLADEDSWORD, (item, player) ->
+                            SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addAdvancedGuardMotion(MoreWeaponCategories.FLAMEBLADEDSWORD, (item, player) ->
                             SwordCraftAnimations.SWORDCRAFT_TYPE1_HIT1)
                     .addGuardBreakMotion(MoreWeaponCategories.FLAMEBLADEDSWORD, (item, player) ->
